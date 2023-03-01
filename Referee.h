@@ -1,15 +1,15 @@
 #ifndef REFEREE_H
 #define REFEREE_H
-
 #include <iostream>
-#include <string>
 #include "Player.h"
+#include "Human.h"
+#include "Computer.h"
 
-class Referee
-{
+class Referee{
     public: 
-            Player * refGame(Player * player1, Player * Player2);
-    
+        Referee();
+        Player * refGame(Player * player1, Player * Player2);
+        ~Referee();
 };
 
-#endif // REFEREE_H
+#endif 
