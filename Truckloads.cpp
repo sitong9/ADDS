@@ -1,9 +1,7 @@
 #include <iostream>
 #include "Truckloads.h"
 int Truckloads::numTrucks(int numCrates, int loadSize){
-    if (numCrates<2 || numCrates>10000) {
-        return -1;
-    }else if(loadSize<1 || loadSize>(100000)){
+    if (numCrates<0 || loadSize<=0) {
         return -1;
     }
 
