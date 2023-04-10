@@ -7,7 +7,7 @@ bool RecursiveBinarySearch::search(vector<int> list, int number, int start, int 
     if (end<start){
         return false;
     }
-    int medPoint = start+(start+end)/2;
+    int medPoint = (start+end)/2;
    
     if (list.at(medPoint) == number){
         return true;
