@@ -2,11 +2,12 @@
 #include "Sort.h"
 #include <vector>
 using namespace std;
+#include <iostream>
 
 int QuickSort::partition(std::vector<int> &list, int left, int right) {
-        int pivotIndex = (right +left)/2;
+        int pivotIndex = (right+left)/2;
              if (right - left>3){
-                  pivotIndex = right - (right-left-2);
+                  pivotIndex = left+2;
               }
 
         int pivot = list.at(pivotIndex);
@@ -30,9 +31,6 @@ int QuickSort::partition(std::vector<int> &list, int left, int right) {
 
 void QuickSort::sort(std::vector<int> &list, int left, int right) {
     if (left >= right) {
-        return;
-    }
-    if (left < 0 || right >= list.size()) {
         return;
     }
     int pivotIndex = partition(list, left, right);
