@@ -3,7 +3,7 @@
 using namespace std;
 
 Trie::Trie(){
-    int routerNumber = -1;
+    int router = -1;
     children = vector<Trie *>(2,nullptr);
 
 }

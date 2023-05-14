@@ -4,7 +4,7 @@
 
 class Trie{
     public:
-    int routerNumber;
+    int router;
     std::vector<Trie *> children;
     Trie();
 };
