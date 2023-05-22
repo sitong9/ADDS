@@ -1,6 +1,5 @@
 #ifndef HEAP_H
 #define HEAP_H
-
 #include <vector>
 #include <cmath> // for floor()
 
@@ -57,17 +56,15 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
 template <typename T>
 void Heap<T>::insert(T value) {
-   values.push_back(value);
+  if (values.size()==0){
+    values.push_back(value); 
+    return;  
+  }  
+  values.push_back(value);
+  int size = values.size();
+  int index = floor((size-1)/2); 
+  heapify(index); 
 
-   int current_index = value.size()-1;
-   int parent_index = (current_index - 1)/2;
-
-   while (current_index > 0 && values[current_index]<values[parent_index]){
-    std::swap(values[current_index],values[parent_index]);
-    current_index = parent_index;
-    parent_index = (current_index - 1)/2;
-
-   }
 }
 
 /*******************************/
