@@ -73,8 +73,8 @@ void Heap<T>::insert(T value) {
 
 template <typename T>
 void Heap<T>::remove(T value) {
-  int index= -1;
-  for (int i = 0; i < value.size() ; i++){
+  int index = -1;
+  for (int i = 0; i < values.size() ; i++){
     if (values[i] == value){
       index = i;
       break;
@@ -84,7 +84,7 @@ if (index == -1){
   return;
 }
 value[index] = values.back();
-values.popback();
+values.pop_back();
 
 heapify(index);
 
