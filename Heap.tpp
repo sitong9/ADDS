@@ -68,7 +68,6 @@ void Heap<T>::insert(T value) {
     parent_index = (current_index - 1) / 2;
   }
 }
-}
 
 /*******************************/
 /* delete values from the heap */
