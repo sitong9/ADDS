@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath> // for floor()
 
+
 template <typename T>
 class Heap {
  private:
@@ -43,7 +44,7 @@ Heap<T>::Heap(std::vector<T> start_values) {
 
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
-  int initial_parent_index = floor(values.size() / 2) - 1;
+  int initial_parent_index = floor((values.size()-1) / 2);
   for (int parent_index = initial_parent_index; parent_index >= 0;
        parent_index--) {
     heapify(parent_index);
@@ -73,23 +74,21 @@ void Heap<T>::insert(T value) {
 
 template <typename T>
 void Heap<T>::remove(T value) {
-int index = -1; 
-for (int i =0 ; i<values.size(); i++){
-  if (values.at(i)==value){
-    index = i;
-    break;
+  int index = -1;
+  for (int i = 0; i < values.size() ; i++){
+    if (values[i] == value){
+      index = i;
+      break;
+    }
   }
-}
 if (index == -1){
-  return; 
+  return;
 }
-int last = values.size()-1;
-T temp = values.at(last);
-values.at(last) = value;
-values.at(index) = temp;
+values[index] = values.back();
 values.pop_back();
-heapify(floor((values.size()-1)/2)); 
-return; 
+
+heapify(index);
+
 }
 
 /*******************************/
@@ -98,7 +97,11 @@ return;
 
 template <typename T>
 T Heap<T>::getMin() {
-  return values.at(0); 
+  if (values.empty()){
+    return T();
+  }
+
+  return values[0];
 }
 
 /*******************************/
@@ -136,11 +139,12 @@ void Heap<T>::heapify(int parent_index) {
     T temp = values.at(parent_index);
     values.at(parent_index) = values.at(index_of_smallest);
     values.at(index_of_smallest) = temp;
-  }
 
-  // move up the 'tree' to grandparent
-  int grandparent = floor(parent_index/2) - 1;
-  heapify(grandparent);
+    // heapify the swapped index - it may need to move
+    // further down the 'tree'
+    heapify(index_of_smallest);
+  }
 }
 
 #endif
+
