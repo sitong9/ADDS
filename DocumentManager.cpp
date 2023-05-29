@@ -28,6 +28,9 @@ int DocumentManager::search(string name) {
 }
 
 bool DocumentManager::borrowDocument(int docid, int patronID) {
+    if (find(patrons.begin(), patrons.end(),patronID)==patrons.end()){
+        return false;
+    }
     for (auto& pair : documents) {
         Document& doc = pair.second;
         if (doc.id == docid) {

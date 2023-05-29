@@ -8,7 +8,6 @@ class DocumentManager{
     public:
     std::unordered_map < std::string , Document> documents;
     std::vector<int> patrons;
-    private:
     void addDocument(std::string name, int id, int license_limit);
     void addPatron(int patronID);
     int search(std::string name); // returns docid if name is in the document collection or 0 if the name is not in the collection
@@ -16,8 +15,4 @@ class DocumentManager{
     void returnDocument(int docid, int patronID);
 
 };
-
-
-
-
 #endif
